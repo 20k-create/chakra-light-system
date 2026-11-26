@@ -7,85 +7,53 @@
 <title>The Seven Chakras</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  padding: 45px 20px;
-  background:
-    radial-gradient(ellipse at top, #354c3b 0%, #202e25 48%, #121e18 100%);
-  color: #f0eadb;
+  padding: 40px 20px;
+  background: #171522;
+  color: #f8f2e9;
   font-family: Georgia, serif;
   text-align: center;
-  min-height: 100vh;
-}
-
-body::before {
-  content: "❧   ✧   ❧   ✧   ❧";
-  display: block;
-  color: #b6a77e;
-  letter-spacing: 12px;
-  font-size: 18px;
-  margin-bottom: 22px;
-}
-
-header {
-  margin: 0 auto 42px;
-  max-width: 850px;
-}
-
-.lotus {
-  color: #c5b78d;
-  font-size: 48px;
-  margin-bottom: 8px;
 }
 
 h1 {
-  color: #e1d7b9;
-  font-size: clamp(27px, 5vw, 43px);
+  font-size: 36px;
   font-weight: normal;
-  letter-spacing: 5px;
-  margin: 0;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #c4c9b3;
-  font-size: 17px;
-  font-style: italic;
-  margin-top: 12px;
-  letter-spacing: 1px;
-}
-
-.gold-line {
-  max-width: 680px;
-  margin: 23px auto;
-  color: #b6a77e;
-  letter-spacing: 7px;
-  font-size: 18px;
+  color: #b9aec5;
+  margin-bottom: 40px;
+  font-size: 15px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  max-width: 1050px;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 20px;
+  max-width: 900px;
   margin: auto;
 }
 
-/* 3D CARD FLIP */
+/* CARD FLIP */
 
 .card {
-  height: 300px;
-  perspective: 1100px;
+  height: 210px;
+  perspective: 1000px;
   cursor: pointer;
-  outline: none;
 }
 
 .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform .8s cubic-bezier(.2,.7,.3,1);
+  transition: transform .7s;
   transform-style: preserve-3d;
 }
 
@@ -97,41 +65,17 @@ h1 {
 .card-back {
   position: absolute;
   inset: 0;
-  padding: 20px 12px;
-  border-radius: 12px;
-  border: 2px solid #b5a57b;
-  outline: 1px solid #756d4c;
-  outline-offset: -7px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  box-shadow:
-    0 7px 20px #0008,
-    inset 0 0 24px #ffffff12;
-}
-
-.card-front::before,
-.card-back::before {
-  content: "❧";
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  color: #c5b78d;
-  font-size: 24px;
-}
-
-.card-front::after,
-.card-back::after {
-  content: "❧";
-  position: absolute;
-  bottom: 10px;
-  right: 12px;
-  color: #c5b78d;
-  font-size: 24px;
+  padding: 18px;
+  color: white;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
 }
 
 .card-front {
@@ -139,303 +83,197 @@ h1 {
 }
 
 .card:hover .card-front {
-  box-shadow:
-    0 0 25px #c4d1a044,
-    inset 0 0 35px #ffffff20;
+  box-shadow: 0 8px 28px rgba(255,255,255,.15);
 }
 
 .card-back {
   transform: rotateY(180deg);
-  background: radial-gradient(circle, #435440, #202f25);
-  border-color: #b5a57b;
-}
-
-.card-back h2 {
-  color: #e1d7b9;
-  font-size: 21px;
-  font-weight: normal;
-  margin: 12px 0;
-}
-
-.card-back p {
-  color: #eee8d9;
-  font-size: 14px;
-  line-height: 1.8;
-  letter-spacing: .2px;
-  margin: 8px 0;
-  max-height: 170px;
-  overflow-y: auto;
-  overflow-wrap: anywhere;
+  background: #292437;
+  border-color: #a28bae;
 }
 
 .symbol {
-  font-size: 59px;
-  line-height: 1;
-  margin-bottom: 24px;
-  color: #e3d7b4;
-  text-shadow: 0 0 15px #d6c79a66;
+  font-size: 42px;
+  margin-bottom: 18px;
 }
 
-.mandala {
-  color: #c6b68a;
-  font-size: 15px;
-  letter-spacing: 6px;
-  margin: 14px 0;
-}
-
-.card-front h2 {
-  color: #f3eddd;
-  font-size: 20px;
+.card h2 {
+  font-size: 19px;
   font-weight: normal;
-  margin: 0 0 9px;
+  margin: 0 0 10px;
 }
 
-.sanskrit {
-  color: #e0d4b6;
+.card p {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.card-back h2 {
+  font-size: 20px;
+  color: #e8cba1;
+  margin-bottom: 15px;
+}
+
+.card-back p {
   font-size: 14px;
-  font-style: italic;
+  letter-spacing: .3px;
+  line-height: 1.7;
+  color: #e5dce9;
 }
 
-.click-hint {
-  position: absolute;
-  bottom: 19px;
-  color: #d0c49e;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
+/* CARD COLORS */
 
-/* EARTHY CARD PALETTE */
+.root { background: #873b43; }
+.sacral { background: #bd6c31; }
+.solar { background: #b79532; }
+.heart { background: #397957; }
+.throat { background: #34799e; }
+.third { background: #514782; }
+.crown { background: #79588c; }
+.education { background: #46546d; }
 
-.root .card-front {
-  background: radial-gradient(circle, #8b5144, #482b27);
-}
+/* SMALL SCREEN */
 
-.sacral .card-front {
-  background: radial-gradient(circle, #bd7846, #69402b);
-}
-
-.solar .card-front {
-  background: radial-gradient(circle, #b89a50, #66522b);
-}
-
-.heart .card-front {
-  background: radial-gradient(circle, #678b5b, #294a34);
-}
-
-.throat .card-front {
-  background: radial-gradient(circle, #5c8980, #294c47);
-}
-
-.third .card-front {
-  background: radial-gradient(circle, #71806a, #394638);
-}
-
-.crown .card-front {
-  background: radial-gradient(circle, #927e91, #504356);
-}
-
-.education .card-front {
-  background: radial-gradient(circle, #68745c, #303d32);
-}
-
-/* FOOTER */
-
-footer {
-  margin: 42px auto 0;
-  color: #b6a77e;
-  font-size: 24px;
-  letter-spacing: 9px;
-}
-
-/* MOBILE */
-
-@media (max-width: 750px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 17px;
+@media(max-width: 400px) {
+  h1 {
+    font-size: 27px;
   }
 
-  .card { height: 260px; }
-}
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 
-@media (max-width: 380px) {
-  body { padding: 30px 12px; }
-  .card { height: 225px; }
-  .card-front h2 { font-size: 16px; }
-  .symbol { font-size: 46px; }
+  .card {
+    height: 190px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="lotus">❀</div>
-  <h1>THE SEVEN CHAKRAS</h1>
-  <div class="subtitle">Explore the seven energy centers</div>
-  <div class="gold-line">❧ ───── ◇ ───── ❧</div>
-</header>
+<h1>THE SEVEN CHAKRAS</h1>
+<div class="subtitle">Explore the seven energy centers</div>
 
 <div class="cards" id="chakraCards"></div>
 
-<footer>❧　✧　❀　✧　❧</footer>
-
 <script>
 
-// =====================================
+// ===================================
 // EDIT CARD TITLES AND DESCRIPTIONS
-// =====================================
+// ===================================
 
 const chakras = [
-
   {
     name: "Root Chakra",
     sanskrit: "Muladhara",
-    symbol: "▽",
-    decoration: "❧ ✦ ❧",
+    symbol: "🔴",
     class: "root",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Sacral Chakra",
     sanskrit: "Svadhisthana",
-    symbol: "☯",
-    decoration: "❧ ✦ ❧",
+    symbol: "🟠",
     class: "sacral",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Solar Plexus",
     sanskrit: "Manipura",
-    symbol: "△",
-    decoration: "❧ ✦ ❧",
+    symbol: "🟡",
     class: "solar",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Heart Chakra",
     sanskrit: "Anahata",
-    symbol: "✡",
-    decoration: "❧ ✦ ❧",
+    symbol: "💚",
     class: "heart",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Throat Chakra",
     sanskrit: "Vishuddha",
-    symbol: "◉",
-    decoration: "❧ ✦ ❧",
+    symbol: "🔵",
     class: "throat",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Third Eye",
     sanskrit: "Ajna",
-    symbol: "◈",
-    decoration: "❧ ✦ ❧",
+    symbol: "🟣",
     class: "third",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Crown Chakra",
     sanskrit: "Sahasrara",
-    symbol: "✺",
-    decoration: "❧ ✦ ❧",
+    symbol: "⚪",
     class: "crown",
     description: "Lorem Ipsum"
   },
-
   {
     name: "Education and Resources",
     sanskrit: "Learn and Explore",
     symbol: "✧",
-    decoration: "❧ ◇ ❧",
     class: "education",
     description: "Lorem Ipsum"
   }
-
 ];
 
-// =====================================
-// CREATE THE INTERACTIVE CARDS
-// =====================================
+// ===================================
+// CREATE INTERACTIVE CARDS
+// ===================================
 
 const container = document.getElementById("chakraCards");
 
-chakras.forEach((chakra) => {
+chakras.forEach((chakra, index) => {
 
   const card = document.createElement("div");
 
   card.className = "card " + chakra.class;
   card.setAttribute("role", "button");
   card.setAttribute("tabindex", "0");
-  card.setAttribute("aria-pressed", "false");
+  card.setAttribute("aria-label", chakra.name + ". Click to flip card.");
 
-  const inner = document.createElement("div");
-  inner.className = "card-inner";
+  card.innerHTML = `
+    <div class="card-inner">
 
-  // FRONT
+      <div class="card-front ${chakra.class}">
 
-  const front = document.createElement("div");
-  front.className = "card-front";
+        <div class="symbol">${chakra.symbol}</div>
 
-  const symbol = document.createElement("div");
-  symbol.className = "symbol";
-  symbol.textContent = chakra.symbol;
+        <h2>${chakra.name}</h2>
 
-  const ornament = document.createElement("div");
-  ornament.className = "mandala";
-  ornament.textContent = chakra.decoration;
+        <p>${chakra.sanskrit}</p>
 
-  const title = document.createElement("h2");
-  title.textContent = chakra.name;
+      </div>
 
-  const sanskrit = document.createElement("div");
-  sanskrit.className = "sanskrit";
-  sanskrit.textContent = chakra.sanskrit;
+      <div class="card-back">
 
-  const hint = document.createElement("div");
-  hint.className = "click-hint";
-  hint.textContent = "Click to explore";
+        <h2>${chakra.name}</h2>
 
-  front.append(symbol, ornament, title, sanskrit, hint);
+        <p>${chakra.description}</p>
 
-  // BACK
+      </div>
 
-  const back = document.createElement("div");
-  back.className = "card-back";
-
-  const backOrnament = document.createElement("div");
-  backOrnament.className = "mandala";
-  backOrnament.textContent = "❧ ◇ ❧";
-
-  const backTitle = document.createElement("h2");
-  backTitle.textContent = chakra.name;
-
-  const description = document.createElement("p");
-  description.textContent = chakra.description;
-
-  const backHint = document.createElement("div");
-  backHint.className = "click-hint";
-  backHint.textContent = "Click to return";
-
-  back.append(backOrnament, backTitle, description, backHint);
-
-  inner.append(front, back);
-  card.appendChild(inner);
-
-  // FLIP ACTION
+    </div>
+  `;
 
   function flipCard() {
-    const flipped = card.classList.toggle("flipped");
-    card.setAttribute("aria-pressed", String(flipped));
+    card.classList.toggle("flipped");
+
+    card.setAttribute(
+      "aria-pressed",
+      card.classList.contains("flipped")
+    );
   }
 
   card.addEventListener("click", flipCard);
