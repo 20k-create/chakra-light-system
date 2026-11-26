@@ -1,0 +1,296 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seven Chakras</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  background: #171522;
+  color: #f8f2e9;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #b9aec5;
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARD FLIP */
+
+.card {
+  height: 210px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform .7s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  color: white;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+.card-front {
+  transition: box-shadow .3s;
+}
+
+.card:hover .card-front {
+  box-shadow: 0 8px 28px rgba(255,255,255,.15);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: #292437;
+  border-color: #a28bae;
+}
+
+.symbol {
+  font-size: 42px;
+  margin-bottom: 18px;
+}
+
+.card h2 {
+  font-size: 19px;
+  font-weight: normal;
+  margin: 0 0 10px;
+}
+
+.card p {
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.card-back h2 {
+  font-size: 20px;
+  color: #e8cba1;
+  margin-bottom: 15px;
+}
+
+.card-back p {
+  font-size: 14px;
+  letter-spacing: .3px;
+  line-height: 1.7;
+  color: #e5dce9;
+}
+
+/* CARD COLORS */
+
+.root { background: #873b43; }
+.sacral { background: #bd6c31; }
+.solar { background: #b79532; }
+.heart { background: #397957; }
+.throat { background: #34799e; }
+.third { background: #514782; }
+.crown { background: #79588c; }
+.education { background: #46546d; }
+
+/* SMALL SCREEN */
+
+@media(max-width: 400px) {
+  h1 {
+    font-size: 27px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card {
+    height: 190px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>THE SEVEN CHAKRAS</h1>
+<div class="subtitle">Explore the seven energy centers</div>
+
+<div class="cards" id="chakraCards"></div>
+
+<script>
+
+// ===================================
+// EDIT CARD TITLES AND DESCRIPTIONS
+// ===================================
+
+const chakras = [
+  {
+    name: "Root Chakra",
+    sanskrit: "Muladhara",
+    symbol: "🔴",
+    class: "root",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Sacral Chakra",
+    sanskrit: "Svadhisthana",
+    symbol: "🟠",
+    class: "sacral",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Solar Plexus",
+    sanskrit: "Manipura",
+    symbol: "🟡",
+    class: "solar",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Heart Chakra",
+    sanskrit: "Anahata",
+    symbol: "💚",
+    class: "heart",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Throat Chakra",
+    sanskrit: "Vishuddha",
+    symbol: "🔵",
+    class: "throat",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Third Eye",
+    sanskrit: "Ajna",
+    symbol: "🟣",
+    class: "third",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Crown Chakra",
+    sanskrit: "Sahasrara",
+    symbol: "⚪",
+    class: "crown",
+    description: "Lorem Ipsum"
+  },
+  {
+    name: "Education and Resources",
+    sanskrit: "Learn and Explore",
+    symbol: "✧",
+    class: "education",
+    description: "Lorem Ipsum"
+  }
+];
+
+// ===================================
+// CREATE INTERACTIVE CARDS
+// ===================================
+
+const container = document.getElementById("chakraCards");
+
+chakras.forEach((chakra, index) => {
+
+  const card = document.createElement("div");
+
+  card.className = "card " + chakra.class;
+  card.setAttribute("role", "button");
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("aria-label", chakra.name + ". Click to flip card.");
+
+  card.innerHTML = `
+    <div class="card-inner">
+
+      <div class="card-front ${chakra.class}">
+
+        <div class="symbol">${chakra.symbol}</div>
+
+        <h2>${chakra.name}</h2>
+
+        <p>${chakra.sanskrit}</p>
+
+      </div>
+
+      <div class="card-back">
+
+        <h2>${chakra.name}</h2>
+
+        <p>${chakra.description}</p>
+
+      </div>
+
+    </div>
+  `;
+
+  function flipCard() {
+    card.classList.toggle("flipped");
+
+    card.setAttribute(
+      "aria-pressed",
+      card.classList.contains("flipped")
+    );
+  }
+
+  card.addEventListener("click", flipCard);
+
+  card.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      flipCard();
+    }
+  });
+
+  container.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
+```
